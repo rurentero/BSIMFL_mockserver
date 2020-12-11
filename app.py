@@ -2,12 +2,15 @@ import os
 from flask import Flask, request, Response, send_from_directory, send_file
 
 # Fuente: https://roytuts.com/python-flask-file-upload-example/
+# Si se ejecuta en Windows, para que el servidor sea visible es necesario ejecutar desde terminal
+# con el siguiente comando: flask run --host=0.0.0.0
 
-#UPLOAD_FOLDER = 'server_files'
-
+UPLOAD_FOLDER = 'C:/Users/usuario13/Documents/server_files'
+HOST_IP = '192.168.1.38'
+HOST_PORT = 5000
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = app.instance_path
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
 
 
@@ -52,4 +55,4 @@ def get_global_model():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host=HOST_IP, port=HOST_PORT)
