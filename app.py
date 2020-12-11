@@ -5,8 +5,9 @@ from flask import Flask, request, Response, send_from_directory, send_file
 
 UPLOAD_FOLDER = 'server_files'
 
+
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = os.path.join(app.instance_path, UPLOAD_FOLDER)
 app.config['MAX_CONTENT_LENGTH'] = 8 * 1024 * 1024
 
 
